@@ -20,8 +20,4 @@ class FilmService
 
         return Film::paginate($per_page, ['*'], 'page', $page);
     }
-    public function show(Film $film)
-    {
-        return $film;
-    }
 }

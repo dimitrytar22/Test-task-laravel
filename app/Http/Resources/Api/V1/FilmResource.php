@@ -18,7 +18,7 @@ class FilmResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'genres' => GenreResource::collection($this->genres),
-            'poster_link' => $this->poster_link
+            'poster_link' => env('APP_URL') . asset('images/'.$this->poster_link)
         ];
     }
 }
