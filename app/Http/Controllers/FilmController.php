@@ -33,6 +33,7 @@ class FilmController extends Controller
     public function store(StoreRequest $request)
     {
         $this->service->store($request);
+        return redirect()->route('films.index')->with('success', 'Film created successfully!');
     }
     public function edit(Film $film)
     {
@@ -48,5 +49,11 @@ class FilmController extends Controller
     {
         $this->service->destroy($film);
         return redirect()->route('films.index')->with('success', 'Film was deleted successdully!');
+    }
+
+    public function publish(Film $film)
+    {
+        $this->service->pubslih($film);
+        return redirect()->route('films.show', $film->id)->with('success', 'Film published successfully!');
     }
 }

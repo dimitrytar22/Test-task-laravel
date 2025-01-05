@@ -15,7 +15,7 @@
         <nav class="space-x-4">
             <a href="{{route('main')}}" class="hover:underline">Home</a>
             <a href="{{route('films.index')}}" class="hover:underline">Films</a>
-            <a href="#" class="hover:underline">Genres</a>
+            <a href="{{route('genres.index')}}" class="hover:underline">Genres</a>
         </nav>
     </div>
 </header>

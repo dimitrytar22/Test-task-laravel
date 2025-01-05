@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Film;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -22,7 +23,8 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:3|max:256',
+            'title' =>  ['required','min:3','max:256',
+                Rule::unique('films', 'title')->ignore($this->route('film'))],
             'genre_ids' => 'required|array|min:1',
             'genre_ids.*' => 'required|int',
             'poster' => 'image|mimes:jpg,jpeg,png|max:2048',

@@ -16,12 +16,12 @@ class FilmService
 
         if(isset($data['poster'])){
             $image = ImageService::moveImage($data['poster'], 'images/posters');
-
+            ImageService::deleteImage('images/'.$film->poster_link);
             $film->poster_link = 'posters/' . $image->getFileName();
         }
 
         $film->genres()->sync($genre_ids);
-        $film->update([
+        $film->updateOrFail([
             'title' => $title
         ]);
 
@@ -49,6 +49,12 @@ class FilmService
     public function destroy(Film $film)
     {
         $film->genres()->detach();
+        ImageService::deleteImage('images/'.$film->poster_link);
         $film->delete();
+    }
+    public function pubslih(Film $film)
+    {
+        $film->published = 1;
+        $film->save();
     }
 }

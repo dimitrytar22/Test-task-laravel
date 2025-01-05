@@ -9,6 +9,13 @@
        class="inline-block bg-blue-500 text-white font-semibold px-6 py-2 rounded shadow hover:bg-blue-600 transition">
         Add film
     </a>
+    @if(session()->has('success'))
+        <div class="container mx-auto mb-4 mt-4">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+                {{ session('success') }}
+            </div>
+        </div>
+    @endif
 
     <h2 class="text-3xl font-bold mb-6 text-left">All Films</h2>
 
@@ -28,7 +35,11 @@
                                     {{$genre->title}}
                                 </span>
                             @endforeach</p>
-
+                        @if($film->published == 0)
+                            <p class="font-bold text-red-500">Not Published</p>
+                        @else
+                            <p class="font-bold text-green-500">Published</p>
+                        @endif
 
                         <button
                             class="mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-300">
