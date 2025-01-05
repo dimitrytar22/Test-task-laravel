@@ -49,7 +49,8 @@ class FilmService
     public function destroy(Film $film)
     {
         $film->genres()->detach();
-        ImageService::deleteImage('images/'.$film->poster_link);
+        if($film->poster_link != 'posters/default.jpg')
+            ImageService::deleteImage('images/'.$film->poster_link);
         $film->delete();
     }
     public function publish(Film $film)
