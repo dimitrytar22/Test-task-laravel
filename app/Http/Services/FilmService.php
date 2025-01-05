@@ -16,7 +16,8 @@ class FilmService
 
         if(isset($data['poster'])){
             $image = ImageService::moveImage($data['poster'], 'images/posters');
-            ImageService::deleteImage('images/'.$film->poster_link);
+            if($film->poster_link != 'posters/default.jpg')
+                ImageService::deleteImage('images/'.$film->poster_link);
             $film->poster_link = 'posters/' . $image->getFileName();
         }
 
