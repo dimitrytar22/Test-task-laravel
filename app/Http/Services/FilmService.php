@@ -52,7 +52,7 @@ class FilmService
         ImageService::deleteImage('images/'.$film->poster_link);
         $film->delete();
     }
-    public function pubslih(Film $film)
+    public function publish(Film $film)
     {
         $film->published = 1;
         $film->save();

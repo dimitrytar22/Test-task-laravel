@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'v1'], function () {
+    Route::apiResource('/genres', \App\Http\Controllers\Api\V1\GenreController::class)->only(['index', 'show']);
+    Route::apiResource('/films', \App\Http\Controllers\Api\V1\FilmController::class)->only(['index', 'show']);
+});

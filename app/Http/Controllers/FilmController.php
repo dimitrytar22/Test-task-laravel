@@ -53,7 +53,7 @@ class FilmController extends Controller
 
     public function publish(Film $film)
     {
-        $this->service->pubslih($film);
+        $this->service->publish($film);
         return redirect()->route('films.show', $film->id)->with('success', 'Film published successfully!');
     }
 }
