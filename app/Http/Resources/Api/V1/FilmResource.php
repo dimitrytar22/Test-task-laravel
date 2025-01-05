@@ -4,7 +4,6 @@ namespace App\Http\Resources\Api\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Config;
 
 class FilmResource extends JsonResource
 {
@@ -20,7 +19,7 @@ class FilmResource extends JsonResource
             'title' => $this->title,
             'published' => $this->published,
             'genres' => GenreResource::collection($this->genres),
-            'poster_link' => url('/'). asset('images/'.$this->poster_link)
+            'poster_link' => url('/') . asset('images/'.$this->poster_link)
         ];
     }
 }
